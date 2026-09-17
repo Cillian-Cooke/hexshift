@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Hexshift
+Comment=All-day hexagonal overlay
+Exec=/usr/bin/python3 -m hexshift
+Path=/home/cillian/Projects/hexshift
+Icon=/home/cillian/Projects/hexshift/icons/tray.svg
+Terminal=false
+Categories=Game;
+StartupNotify=false
