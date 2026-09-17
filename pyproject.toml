@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hexshift"
+version = "1.0.0"
+description = "A slow hexagonal territory game for Linux, Windows, and macOS."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["pygame-ce>=2.5.0"]
+
+[project.scripts]
+hexshift = "hexshift.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["hexshift"]
+
+[tool.setuptools.package-data]
+hexshift = ["icons/*.svg"]

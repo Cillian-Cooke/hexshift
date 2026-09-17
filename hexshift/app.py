@@ -19,9 +19,13 @@ from hexshift.game import Game
 from hexshift.overlay import Overlay, _workarea
 from hexshift.save import load_game, save_game
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-ICON = os.path.join(ROOT, "icons", "tray.svg")
-ICON_ATTENTION = os.path.join(ROOT, "icons", "tray-attention.svg")
+ROOT = os.path.abspath(os.path.dirname(__file__))
+_ICON_CANDIDATES = (
+    os.path.join(ROOT, "icons", "tray.svg"),
+    os.path.join(os.path.dirname(ROOT), "icons", "tray.svg"),
+)
+ICON = next((p for p in _ICON_CANDIDATES if os.path.isfile(p)), _ICON_CANDIDATES[0])
+ICON_ATTENTION = ICON.replace("tray.svg", "tray-attention.svg")
 
 
 class App:

@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 import tempfile
 
 from hexshift.game import Game
@@ -8,10 +9,18 @@ APP_ID = "hexshift"
 
 
 def data_dir():
-    base = os.environ.get("XDG_DATA_HOME") or os.path.join(
-        os.path.expanduser("~"), ".local", "share"
-    )
-    path = os.path.join(base, APP_ID)
+    if sys.platform == "win32":
+        base = os.environ.get("APPDATA") or os.path.expanduser("~")
+        path = os.path.join(base, "Hexshift")
+    elif sys.platform == "darwin":
+        path = os.path.join(
+            os.path.expanduser("~"), "Library", "Application Support", "hexshift"
+        )
+    else:
+        base = os.environ.get("XDG_DATA_HOME") or os.path.join(
+            os.path.expanduser("~"), ".local", "share"
+        )
+        path = os.path.join(base, APP_ID)
     os.makedirs(path, exist_ok=True)
     return path
 
